@@ -8,14 +8,14 @@ class NoInternetWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(CupertinoIcons.wifi_exclamationmark, size: 80),
+          const Icon(CupertinoIcons.wifi_exclamationmark, size: 80),
           RichText(
             textAlign: TextAlign.center,
-            text: TextSpan(
+            text: const TextSpan(
               children: <TextSpan>[
                 TextSpan(
                   text: "No Internet Connection\n",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 30, // Large font size for the hour
                     color: Colors.black,
                     fontFamily: 'Sarabun',
@@ -24,7 +24,7 @@ class NoInternetWidget {
                 ),
                 TextSpan(
                   text: 'Check your connection and try again.',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Sarabun',
                     fontWeight: FontWeight.w400,
                     fontSize: 15, // Smaller font size for AM/PM

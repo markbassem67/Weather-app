@@ -17,7 +17,7 @@ void main() {
   runApp(
     BlocProvider(
       create: (_) => WeatherCubit(weatherRepository),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  WeatherScreen(),
+      home:  const WeatherScreen(),
     );
   }
 }

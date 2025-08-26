@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomPopupMenu {
-  Widget CustomPopupMenuWidget() {
+  Widget customPopupMenuWidget() {
     return PopupMenuButton(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       itemBuilder: (context) => [
@@ -26,7 +26,7 @@ class CustomPopupMenu {
         )),
         //const PopupMenuItem(value: 'item3', child: Text('Item 3')),
       ],
-      icon: Icon(CupertinoIcons.bars, color: Colors.white),
+      icon: const Icon(CupertinoIcons.bars, color: Colors.white),
       offset: const Offset(0, 45), // 👈 shift menu 50px down
     );
   }

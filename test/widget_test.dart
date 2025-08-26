@@ -15,7 +15,6 @@ Future<String> getCityAndCountry(double lat, double lon) async {
 void main() {
   test('Get city and country from coordinates', () async {
     final result = await getCityAndCountry(40.7128, -74.0060); // New York
-    print(result);
     expect(result.contains("United States"), true);
   });
 }

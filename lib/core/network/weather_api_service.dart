@@ -13,7 +13,7 @@ class ObtainWeather {
       '&longitude=$long'
       '&daily=temperature_2m_min,temperature_2m_max'
       '&hourly=temperature_2m,weather_code,is_day'
-      '&current=temperature_2m,is_day,relative_humidity_2m,apparent_temperature,weather_code'
+      '&current=temperature_2m,is_day,relative_humidity_2m,apparent_temperature,weather_code,rain'
       '&timezone=auto'
       '&forecast_hours=24',
     );

@@ -98,7 +98,7 @@ class WeatherTimeline {
       children: [
         Row(
           children: [
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Text(
               description,
               style: const TextStyle(
@@ -201,7 +201,7 @@ class WeatherTimeline {
                         height: 30,
                         clipBehavior: Clip.antiAlias,
                         decoration: const BoxDecoration(),
-                        child: Icon(weatherIcons[i], color: Color(0xFF474747)),
+                        child: Icon(weatherIcons[i], color: const Color(0xFF474747)),
                       ),
                     ),
                 ],

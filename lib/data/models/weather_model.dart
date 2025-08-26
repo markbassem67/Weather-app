@@ -58,7 +58,8 @@ class Current {
     required this.isDay,
     required this.relativeHumidity2M,
     required this.apparentTemperature,
-    required this.weatherCode
+    required this.weatherCode,
+    required this.rain
   });
 
   final String? time;
@@ -68,6 +69,7 @@ class Current {
   final int? relativeHumidity2M;
   final double? apparentTemperature;
   final int? weatherCode;
+  final double? rain;
 
   factory Current.fromJson(Map<String, dynamic> json){
     return Current(
@@ -77,7 +79,8 @@ class Current {
       isDay: json["is_day"],
       relativeHumidity2M: json["relative_humidity_2m"],
       apparentTemperature: json["apparent_temperature"],
-      weatherCode: json['weather_code']
+      weatherCode: json['weather_code'],
+      rain: json['rain'],
     );
   }
 

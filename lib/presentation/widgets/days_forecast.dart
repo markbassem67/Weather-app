@@ -28,10 +28,10 @@ class DaysForecast {
         height: 160,
         child: ListView(
           children: List.generate(7, (index) {
-            final isSmallFont = index == 0; // Yesterday row
-            final fontSize = isSmallFont ? 15.0 : 17.0;
+            final isSmallFont = index == 0;
+            final fontSize = isSmallFont ? 17.0 : 19.0;
             return Padding(
-              padding: EdgeInsets.only(top: 6),
+              padding: const EdgeInsets.only(top: 6),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -50,8 +50,8 @@ class DaysForecast {
                   Row(
                     children: [
                       // Placeholder for icons
-                      SizedBox(width: 18, height: 18),
-                      SizedBox(width: 18, height: 18),
+                      const SizedBox(width: 18, height: 18),
+                      const SizedBox(width: 18, height: 18),
                       SizedBox(
                         // width: 18,
                         child: Text(
@@ -64,7 +64,7 @@ class DaysForecast {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       SizedBox(
                         width: 28,
                         child: Text(

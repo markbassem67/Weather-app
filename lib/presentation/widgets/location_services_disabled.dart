@@ -2,20 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LocationServicesDisabled {
-  Widget LocationDisabledWidget() {
+  Widget locationDisabledWidget() {
     return Container(
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(CupertinoIcons.location_slash, size: 80),
+          const Icon(CupertinoIcons.location_slash, size: 80),
           RichText(
             textAlign: TextAlign.center,
-            text: TextSpan(
+            text: const TextSpan(
               children: <TextSpan>[
                 TextSpan(
                   text: "Location Services disabled\n",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 30, // Large font size for the hour
                     color: Colors.black,
                     fontFamily: 'Sarabun',
@@ -24,7 +24,7 @@ class LocationServicesDisabled {
                 ),
                 TextSpan(
                   text: 'Turn on Location Services to use the app.',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Sarabun',
                     fontWeight: FontWeight.w400,
                     fontSize: 17, // Smaller font size for AM/PM
