@@ -175,6 +175,7 @@ class Hourly {
     required this.weatherCode,
     required this.isDay,
     required this.uvIndex,
+    required this.humidityPercent,
   });
 
   final List<String> time;
@@ -182,6 +183,7 @@ class Hourly {
   final List<int> weatherCode;
   final List<int> isDay;
   final List<double> uvIndex;
+  final List<int> humidityPercent;
 
   factory Hourly.fromJson(Map<String, dynamic> json) {
     return Hourly(
@@ -200,6 +202,9 @@ class Hourly {
       uvIndex: json["uv_index"] == null
           ? []
           : List<double>.from(json["uv_index"]!.map((x) => x)),
+      humidityPercent: json["relative_humidity_2m"] == null
+          ? []
+          : List<int>.from(json["relative_humidity_2m"]!.map((x) => x)),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:testapp/core/utils/conditions_severity_calculator.dart';
 import 'package:testapp/core/utils/hours_parcer.dart';
 import 'package:testapp/core/utils/weather_code_mapper.dart';
 import 'package:testapp/logic/cubit/weather_cubit.dart';
@@ -31,6 +32,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   CustomPopupMenu popupMenu = CustomPopupMenu();
   NoInternetWidget nointernetWidget = NoInternetWidget();
   LocationServicesDisabled noLocationEnabledWidget = LocationServicesDisabled();
+  ConditionsSeverityCalculator calcConditions = ConditionsSeverityCalculator();
 
   @override
   void initState() {
@@ -139,7 +141,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 330),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.35,
+                      ),
                       Expanded(
                         child: SingleChildScrollView(
                           child: Column(
@@ -181,7 +185,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-
                                       children: [
                                         Row(
                                           children: [
@@ -202,9 +205,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           '${weather.current!.rain!.toInt()}%',
                                           style: const TextStyle(fontSize: 31),
                                         ),
-                                        const Text(
-                                          'Moderate',
-                                          style: TextStyle(fontSize: 14),
+                                        Text(
+                                          calcConditions.getRainDescription(
+                                            weather.current!.rain!.toInt(),
+                                          ),
+                                          style: const TextStyle(fontSize: 14),
                                         ),
                                       ],
                                     ),
@@ -253,9 +258,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                               .toString(),
                                           style: const TextStyle(fontSize: 31),
                                         ),
-                                        const Text(
-                                          'High',
-                                          style: TextStyle(fontSize: 14),
+                                        Text(
+                                          calcConditions.uvIntensity(
+                                            weather.hourly!.uvIndex[0].toInt(),
+                                          ),
+                                          style: const TextStyle(fontSize: 14),
                                         ),
                                       ],
                                     ),
@@ -299,13 +306,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                             ),
                                           ],
                                         ),
-                                        const Text(
-                                          '50%',
-                                          style: TextStyle(fontSize: 31),
+                                        Text(
+                                          weather.hourly!.humidityPercent[0]
+                                                  .toString() +
+                                              '%',
+                                          style: const TextStyle(fontSize: 31),
                                         ),
-                                        const Text(
-                                          'Moderate',
-                                          style: TextStyle(fontSize: 14),
+                                        Text(
+                                          calcConditions.getHumidityDescription(
+                                            weather.hourly!.humidityPercent[0],
+                                          ),
+                                          style: const TextStyle(fontSize: 14),
                                         ),
                                       ],
                                     ),
