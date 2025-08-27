@@ -77,7 +77,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  actions: [popupMenu.customPopupMenuWidget()],
+                  // actions: [popupMenu.customPopupMenuWidget()], // add later 
                   backgroundColor: Colors.transparent,
                   elevation: 0.0,
                 ),
