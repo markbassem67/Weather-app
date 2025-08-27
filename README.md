@@ -1,16 +1,58 @@
-# testapp
+# 🌦️ Weather App
 
-A new Flutter project.
+A cross-platform weather application built with **Flutter** that provides real-time weather updates with a clean and responsive UI. The app automatically detects the user’s location, fetches weather data using the **Open-Meteo API**, and displays it in a simple, intuitive format.  
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🌍 **Location-based weather** – Automatically detects the user’s GPS location and fetches current weather conditions  
+- ⚡ **Real-time weather updates** – Pulls live data from the Open-Meteo API  
+- 🚦 **Error handling** – Handles cases like no internet, disabled location services, or invalid API responses    
+- 📱 **Cross-platform** – Works on both Android and iOS with a responsive UI  
+- 🧩 **Clean architecture** – Separation of concerns between data, domain, and presentation layers  
+- 🎯 **Optimised state management** – Uses Cubit for efficient and reactive UI updates  
+- 🎨 **User-friendly UI** – Displays weather conditions in a clean, modern design  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Flutter (Dart)  
+- **State Management:** BLoC (Cubit)  
+- **API Provider:** Open-Meteo API  
+- **Location:** `geolocator` package for GPS services  
+- **Networking:** `http` package for REST API calls  
+- **Architecture:** Repository Pattern + BLoC  
+- **Error Handling:** Cubit state classes for success, loading, and error  
+
+
+
+---
+
+
+## 🔌 API Integration
+
+The app uses **Open-Meteo API** to fetch live weather data.  
+To use this project, you don't need an API key, visit Open-Meteo docs and obtain your URL
+
+---
+
+## 📸 Screenshots
+
+---
+
+
+  ## 🤝 Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+---
+
+## 📌 Credits
+
+- **UI Design Inspiration**: Heavily inspired by the [Weather Mobile App UX/UI Design Free UI Kit](https://www.figma.com/community/file/1237057234092490681/weather-mobile-app-ux-ui-design-free-ui-kit) on Figma Community.
+
+---
+
+
