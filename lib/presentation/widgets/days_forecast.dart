@@ -25,8 +25,7 @@ class DaysForecast {
     return Center(
       child: Container(
         width: 300,
-        height: 160,
-        child: ListView(
+        child: Column(
           children: List.generate(7, (index) {
             final isSmallFont = index == 0;
             final fontSize = isSmallFont ? 17.0 : 19.0;
@@ -36,7 +35,6 @@ class DaysForecast {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    //width: 102,
                     child: Text(
                       index == 0 ? 'Today' : days[index],
                       style: TextStyle(
@@ -49,11 +47,9 @@ class DaysForecast {
                   ),
                   Row(
                     children: [
-                      // Placeholder for icons
                       const SizedBox(width: 18, height: 18),
                       const SizedBox(width: 18, height: 18),
                       SizedBox(
-                        // width: 18,
                         child: Text(
                           '${minTemp[index].round().toString()}°',
                           style: TextStyle(
@@ -87,4 +83,5 @@ class DaysForecast {
       ),
     );
   }
+
 }

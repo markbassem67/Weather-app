@@ -79,258 +79,263 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   backgroundColor: Colors.transparent,
                   elevation: 0.0,
                 ),
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              '${weather.current!.temperature2M!.round().toString()}°C',
-                              style: const TextStyle(
-                                fontSize: 45,
-                                color: Colors.white,
-                                fontFamily: 'Nunito',
+                body: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                '${weather.current!.temperature2M!.round().toString()}°C',
+                                style: const TextStyle(
+                                  fontSize: 45,
+                                  color: Colors.white,
+                                  fontFamily: 'Nunito',
+                                ),
                               ),
-                            ),
-                            const SizedBox(width: 18),
-                            Column(
-                              children: [
-                                Text(
-                                  'H: ${weather.daily!.temperature2MMax.first.round().toString()}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
+                              const SizedBox(width: 18),
+                              Column(
+                                children: [
+                                  Text(
+                                    'H: ${weather.daily!.temperature2MMax.first.round().toString()}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  'L: ${weather.daily!.temperature2MMin.first.round().toString()}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
+                                  Text(
+                                    'L: ${weather.daily!.temperature2MMin.first.round().toString()}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(width: 10),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            const Icon(
-                              CupertinoIcons.location_fill,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              cityandCountry,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontFamily: 'Nunito',
+                                ],
                               ),
-                            ),
-                            const SizedBox(width: 10),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 330),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            WeatherTimeline(
-                              times: hours.parseHours(weather.hourly!.time),
-                              temps: weather.hourly!.temperature2M
-                                  .map((t) => t.round().toString())
-                                  .toList(),
-                              description:
-                                  'Feels like ${weather.current!.apparentTemperature!.round().toString()} degrees, ${weatherCode.fetchCode(weather.current!.weatherCode)}.',
-                              weatherCode: weather.hourly!.weatherCode,
-                              isDay: weather.hourly!.isDay,
-                            ).buildWidget(),
-                            const SizedBox(height: 15),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  width: 130,
-                                  height: 110,
-                                  margin: const EdgeInsets.all(5),
-                                  padding: const EdgeInsets.fromLTRB(
-                                    6,
-                                    4,
-                                    0,
-                                    0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white, // background color
-                                    border: Border.all(
-                                      color: Colors.grey.shade200,
-                                      // border color
-                                      width: 2.0, // border width
+                              const SizedBox(width: 10),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              const Icon(
+                                CupertinoIcons.location_fill,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                cityandCountry,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontFamily: 'Nunito',
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 330),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              WeatherTimeline(
+                                times: hours.parseHours(weather.hourly!.time),
+                                temps: weather.hourly!.temperature2M
+                                    .map((t) => t.round().toString())
+                                    .toList(),
+                                description:
+                                    'Feels like ${weather.current!.apparentTemperature!.round().toString()} degrees, ${weatherCode.fetchCode(weather.current!.weatherCode)}.',
+                                weatherCode: weather.hourly!.weatherCode,
+                                isDay: weather.hourly!.isDay,
+                              ).buildWidget(),
+                              const SizedBox(height: 15),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width: 130,
+                                    height: 110,
+                                    margin: const EdgeInsets.all(5),
+                                    padding: const EdgeInsets.fromLTRB(
+                                      6,
+                                      4,
+                                      0,
+                                      0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white, // background color
+                                      border: Border.all(
+                                        color: Colors.grey.shade200,
+                                        // border color
+                                        width: 2.0, // border width
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
 
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            CupertinoIcons.drop,
-                                            size: 19,
-                                            color: weather.current!.isDay == 1
-                                                ? const Color(0xFF87CEEB)
-                                                : const Color(0xFF472B97),
-                                          ),
-                                          const Text(
-                                            ' Rain',
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                        ],
-                                      ),
-                                      Text(
-                                        '${weather.current!.rain!.toInt()}%',
-                                        style: const TextStyle(fontSize: 31),
-                                      ),
-                                      const Text(
-                                        'Moderate',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 130,
-                                  height: 110,
-                                  margin: const EdgeInsets.all(5),
-                                  padding: const EdgeInsets.fromLTRB(
-                                    6,
-                                    4,
-                                    0,
-                                    0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white, // background color
-                                    border: Border.all(
-                                      color: Colors.grey.shade200,
-                                      // border color
-                                      width: 2.0, // border width
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              CupertinoIcons.drop,
+                                              size: 19,
+                                              color: weather.current!.isDay == 1
+                                                  ? const Color(0xFF87CEEB)
+                                                  : const Color(0xFF472B97),
+                                            ),
+                                            const Text(
+                                              ' Rain',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          '${weather.current!.rain!.toInt()}%',
+                                          style: const TextStyle(fontSize: 31),
+                                        ),
+                                        const Text(
+                                          'Moderate',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
                                     ),
-                                    borderRadius: BorderRadius.circular(12),
                                   ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            CupertinoIcons.sun_min,
-                                            size: 19,
-                                            color: weather.current!.isDay == 1
-                                                ? const Color(0xFF87CEEB)
-                                                : const Color(0xFF472B97),
-                                          ),
-                                          const Text(
-                                            ' UV Index',
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                        ],
-                                      ),
-                                      const Text(
-                                        '8',
-                                        style: TextStyle(fontSize: 31),
-                                      ),
-                                      const Text(
-                                        'High',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 130,
-                                  height: 110,
-                                  margin: const EdgeInsets.all(5),
-                                  padding: const EdgeInsets.fromLTRB(
-                                    6,
-                                    4,
-                                    0,
-                                    0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white, // background color
-                                    border: Border.all(
-                                      color: Colors.grey.shade200,
-                                      // border color
-                                      width: 2.0, // border width
+                                  Container(
+                                    width: 130,
+                                    height: 110,
+                                    margin: const EdgeInsets.all(5),
+                                    padding: const EdgeInsets.fromLTRB(
+                                      6,
+                                      4,
+                                      0,
+                                      0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white, // background color
+                                      border: Border.all(
+                                        color: Colors.grey.shade200,
+                                        // border color
+                                        width: 2.0, // border width
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              CupertinoIcons.sun_min,
+                                              size: 19,
+                                              color: weather.current!.isDay == 1
+                                                  ? const Color(0xFF87CEEB)
+                                                  : const Color(0xFF472B97),
+                                            ),
+                                            const Text(
+                                              ' UV Index',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          weather.hourly!.uvIndex[0]
+                                              .toInt()
+                                              .toString(),
+                                          style: const TextStyle(fontSize: 31),
+                                        ),
+                                        const Text(
+                                          'High',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  Container(
+                                    width: 130,
+                                    height: 110,
+                                    margin: const EdgeInsets.all(5),
+                                    padding: const EdgeInsets.fromLTRB(
+                                      6,
+                                      4,
+                                      0,
+                                      0,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white, // background color
+                                      border: Border.all(
+                                        color: Colors.grey.shade200,
+                                        // border color
+                                        width: 2.0, // border width
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
 
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            CupertinoIcons.cloud_sun,
-                                            size: 19,
-                                            color: weather.current!.isDay == 1
-                                                ? const Color(0xFF87CEEB)
-                                                : const Color(0xFF472B97),
-                                          ),
-                                          const Text(
-                                            ' Humidity',
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                        ],
-                                      ),
-                                      const Text(
-                                        '50%',
-                                        style: TextStyle(fontSize: 31),
-                                      ),
-                                      const Text(
-                                        'Moderate',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                    ],
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              CupertinoIcons.cloud_sun,
+                                              size: 19,
+                                              color: weather.current!.isDay == 1
+                                                  ? const Color(0xFF87CEEB)
+                                                  : const Color(0xFF472B97),
+                                            ),
+                                            const Text(
+                                              ' Humidity',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        const Text(
+                                          '50%',
+                                          style: TextStyle(fontSize: 31),
+                                        ),
+                                        const Text(
+                                          'Moderate',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 15),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Weekly Forecast',
-                                  style: TextStyle(
-                                    fontSize: 21,
-                                    fontFamily: 'Sarabun',
-                                    fontWeight: FontWeight.w400,
+                                ],
+                              ),
+                              const SizedBox(height: 15),
+                              const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Weekly Forecast',
+                                    style: TextStyle(
+                                      fontSize: 21,
+                                      fontFamily: 'Sarabun',
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            daysForecastWidget.daysForecastWidget(
-                              weather.daily!.temperature2MMin,
-                              weather.daily!.temperature2MMax,
-                            ),
-                          ],
+                                ],
+                              ),
+                              daysForecastWidget.daysForecastWidget(
+                                weather.daily!.temperature2MMin,
+                                weather.daily!.temperature2MMax,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
