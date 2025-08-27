@@ -40,6 +40,13 @@ To use this project, you don't need an API key, visit Open-Meteo docs and obtain
 
 ## 📸 Screenshots
 
+| Screenshot 1 | Screenshot 2 |
+|--------------|--------------|
+| <img src="https://github.com/user-attachments/assets/dfe64989-6c63-4b9f-95b0-6f2b9a24e3d4" width="300"/> | <img src="https://github.com/user-attachments/assets/f02138a9-1f81-403b-85d4-a1fcb7625ca9" width="300"/> |
+
+
+
+
 ---
 
 
