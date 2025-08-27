@@ -307,9 +307,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           ],
                                         ),
                                         Text(
-                                          weather.hourly!.humidityPercent[0]
-                                                  .toString() +
-                                              '%',
+                                          '${weather.hourly!.humidityPercent[0]}%',
                                           style: const TextStyle(fontSize: 31),
                                         ),
                                         Text(
