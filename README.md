@@ -58,7 +58,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 ## 📌 Credits
 
-- **UI Design Inspiration**: Heavily inspired by the [Weather Mobile App UX/UI Design Free UI Kit](https://www.figma.com/community/file/1237057234092490681/weather-mobile-app-ux-ui-design-free-ui-kit) on Figma Community.
+- **UI Design Inspiration**: Heavily inspired by [Weather Mobile App UX/UI Design Free UI Kit](https://www.figma.com/community/file/1237057234092490681/weather-mobile-app-ux-ui-design-free-ui-kit) on Figma Community, credits go to the designer.
 
 ---
 
