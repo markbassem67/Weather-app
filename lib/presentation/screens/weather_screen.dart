@@ -15,6 +15,7 @@ import '../widgets/custom_popupmenu.dart';
 import '../widgets/hourly_timeline.dart';
 import '../widgets/location_services_disabled.dart';
 import '../widgets/no_internetconnection_widget.dart';
+import '../widgets/weather_container.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -33,6 +34,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   NoInternetWidget nointernetWidget = NoInternetWidget();
   LocationServicesDisabled noLocationEnabledWidget = LocationServicesDisabled();
   ConditionsSeverityCalculator calcConditions = ConditionsSeverityCalculator();
+  WeatherContainer weatherContainerBuild = WeatherContainer();
 
   @override
   void initState() {
@@ -77,7 +79,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               Scaffold(
                 backgroundColor: Colors.transparent,
                 appBar: AppBar(
-                  // actions: [popupMenu.customPopupMenuWidget()], // add later
+                  // actions: [popupMenu.customPopupMenuWidget()], // TODO: add popup menu later
                   backgroundColor: Colors.transparent,
                   elevation: 0.0,
                 ),
@@ -163,161 +165,26 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
-                                    width: 130,
-                                    height: 110,
-                                    margin: const EdgeInsets.all(5),
-                                    padding: const EdgeInsets.fromLTRB(
-                                      6,
-                                      4,
-                                      0,
-                                      0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white, // background color
-                                      border: Border.all(
-                                        color: Colors.grey.shade200,
-                                        // border color
-                                        width: 2.0, // border width
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              CupertinoIcons.drop,
-                                              size: 19,
-                                              color: weather.current!.isDay == 1
-                                                  ? const Color(0xFF87CEEB)
-                                                  : const Color(0xFF472B97),
-                                            ),
-                                            const Text(
-                                              ' Rain',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          '${weather.current!.rain!.toInt()}%',
-                                          style: const TextStyle(fontSize: 31),
-                                        ),
-                                        Text(
-                                          calcConditions.getRainDescription(
-                                            weather.current!.rain!.toInt(),
-                                          ),
-                                          style: const TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
+                                  weatherContainerBuild.weatherContainer(
+                                    CupertinoIcons.drop,
+                                    weather.current!.isDay!,
+                                    'Rain',
+                                    weather.current!.rain!.toInt(),
+                                    calcConditions.getRainDescription,
                                   ),
-                                  Container(
-                                    width: 130,
-                                    height: 110,
-                                    margin: const EdgeInsets.all(5),
-                                    padding: const EdgeInsets.fromLTRB(
-                                      6,
-                                      4,
-                                      0,
-                                      0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white, // background color
-                                      border: Border.all(
-                                        color: Colors.grey.shade200,
-                                        // border color
-                                        width: 2.0, // border width
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              CupertinoIcons.sun_min,
-                                              size: 19,
-                                              color: weather.current!.isDay == 1
-                                                  ? const Color(0xFF87CEEB)
-                                                  : const Color(0xFF472B97),
-                                            ),
-                                            const Text(
-                                              ' UV Index',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          weather.hourly!.uvIndex[0]
-                                              .toInt()
-                                              .toString(),
-                                          style: const TextStyle(fontSize: 31),
-                                        ),
-                                        Text(
-                                          calcConditions.uvIntensity(
-                                            weather.hourly!.uvIndex[0].toInt(),
-                                          ),
-                                          style: const TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
+                                  weatherContainerBuild.weatherContainer(
+                                    CupertinoIcons.sun_min,
+                                    weather.current!.isDay!,
+                                    'UV Index',
+                                    weather.hourly!.uvIndex[0].toInt(),
+                                    calcConditions.uvIntensity,
                                   ),
-                                  Container(
-                                    width: 130,
-                                    height: 110,
-                                    margin: const EdgeInsets.all(5),
-                                    padding: const EdgeInsets.fromLTRB(
-                                      6,
-                                      4,
-                                      0,
-                                      0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white, // background color
-                                      border: Border.all(
-                                        color: Colors.grey.shade200,
-                                        // border color
-                                        width: 2.0, // border width
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              CupertinoIcons.cloud_sun,
-                                              size: 19,
-                                              color: weather.current!.isDay == 1
-                                                  ? const Color(0xFF87CEEB)
-                                                  : const Color(0xFF472B97),
-                                            ),
-                                            const Text(
-                                              ' Humidity',
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          '${weather.hourly!.humidityPercent[0]}%',
-                                          style: const TextStyle(fontSize: 31),
-                                        ),
-                                        Text(
-                                          calcConditions.getHumidityDescription(
-                                            weather.hourly!.humidityPercent[0],
-                                          ),
-                                          style: const TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
+                                  weatherContainerBuild.weatherContainer(
+                                    CupertinoIcons.cloud_sun,
+                                    weather.current!.isDay!,
+                                    'Humidity',
+                                    weather.hourly!.humidityPercent[0],
+                                    calcConditions.getHumidityDescription,
                                   ),
                                 ],
                               ),
