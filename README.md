@@ -40,9 +40,10 @@ To use this project, you don't need an API key, visit Open-Meteo docs and obtain
 
 ## 📸 Screenshots
 
-| Home Screen Screenshot 1 | Home Screen Screenshot 2 |
-|--------------|--------------|
-| <img src="https://github.com/user-attachments/assets/dfe64989-6c63-4b9f-95b0-6f2b9a24e3d4" width="300"/> | <img src="https://github.com/user-attachments/assets/f02138a9-1f81-403b-85d4-a1fcb7625ca9" width="300"/> |
+| Home Screen Night Time 1 | Home Screen Night Time 2 | Home Screen Day Time 1 |
+|--------------|--------------|--------------|
+| <img src="https://github.com/user-attachments/assets/dfe64989-6c63-4b9f-95b0-6f2b9a24e3d4" width="300"/> | <img src="https://github.com/user-attachments/assets/f02138a9-1f81-403b-85d4-a1fcb7625ca9" width="300"/> |  <img width="300"  alt="Simulator Screenshot - iPhone 16 Plus - 2025-08-29 at 17 47 45" src="https://github.com/user-attachments/assets/0c19481d-3dde-44c6-ab2c-33051e737398" />
+
 
 
 | No Internet Connection | Location Services Disabled |
