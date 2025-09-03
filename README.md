@@ -48,7 +48,8 @@ To use this project, you don't need an API key, visit Open-Meteo docs and obtain
 
 | No Internet Connection | Location Services Disabled |
 |--------------|--------------|
-| <img width="300"  alt="Simulator Screenshot - iPhone 16 Plus - 2025-08-28 at 22 46 51" src="https://github.com/user-attachments/assets/1cac31b5-e3cc-40f9-a3fe-162065119b37" /> | <img width="300"  alt="Simulator Screenshot - iPhone 16 Plus - 2025-08-28 at 22 46 32" src="https://github.com/user-attachments/assets/4c70c782-2888-4a72-956d-9e4748d981ed" /> |
+| <img width="300" height="2796" alt="Simulator Screenshot - iPhone 16 Plus - 2025-09-03 at 23 42 23" src="https://github.com/user-attachments/assets/0a805901-c44e-4632-9b5a-1c1af873febd" /> | <img width="300"  alt="Simulator Screenshot - iPhone 16 Plus - 2025-08-28 at 22 46 32" src="https://github.com/user-attachments/assets/4c70c782-2888-4a72-956d-9e4748d981ed" /> |
+
 
 
 
