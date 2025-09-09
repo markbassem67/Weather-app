@@ -200,7 +200,10 @@ class WeatherTimeline {
                         height: 30,
                         clipBehavior: Clip.antiAlias,
                         decoration: const BoxDecoration(),
-                        child: Icon(weatherIcons[i], color: const Color(0xFF474747)),
+                        child: Icon(
+                          weatherIcons[i],
+                          color: const Color(0xFF474747),
+                        ),
                       ),
                     ),
                 ],

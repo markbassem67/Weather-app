@@ -40,7 +40,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void initState() {
     super.initState();
     context.read<WeatherCubit>().getWeather();
-
   }
 
   @override
@@ -85,135 +84,145 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   elevation: 0.0,
                   scrolledUnderElevation: 0,
                 ),
+
                 body: SafeArea(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      final screenHeight = constraints.maxHeight;
+                      final screenWidth = constraints.maxWidth;
+
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
-                                '${weather.current!.temperature2M!.round().toString()}°C',
-                                style: const TextStyle(
-                                  fontSize: 45,
-                                  color: Colors.white,
-                                  fontFamily: 'Nunito',
-                                ),
-                              ),
-                              const SizedBox(width: 18),
-                              Column(
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
-                                    'H: ${weather.daily!.temperature2MMax.first.round().toString()}',
-                                    style: const TextStyle(
+                                    '${weather.current!.temperature2M!.round().toString()}°C',
+                                    style: TextStyle(
+                                      fontSize:
+                                          screenWidth *
+                                          0.1, // dynamic font size
                                       color: Colors.white,
-                                      fontSize: 18,
+                                      fontFamily: 'Nunito',
                                     ),
                                   ),
+                                  SizedBox(width: screenWidth * 0.04),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        'H: ${weather.daily!.temperature2MMax.first.round().toString()}',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: screenWidth * 0.045,
+                                        ),
+                                      ),
+                                      Text(
+                                        'L: ${weather.daily!.temperature2MMin.first.round().toString()}',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: screenWidth * 0.045,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: screenWidth * 0.025),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  const Icon(
+                                    CupertinoIcons.location_fill,
+                                    color: Colors.white,
+                                  ),
                                   Text(
-                                    'L: ${weather.daily!.temperature2MMin.first.round().toString()}',
-                                    style: const TextStyle(
+                                    cityandCountry,
+                                    style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 18,
+                                      fontSize: screenWidth * 0.048,
+                                      fontFamily: 'Nunito',
                                     ),
+                                  ),
+                                  SizedBox(width: screenWidth * 0.025),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: screenHeight * 0.40),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  WeatherTimeline(
+                                    times: hours.parseHours(
+                                      weather.hourly!.time,
+                                    ),
+                                    temps: weather.hourly!.temperature2M
+                                        .map((t) => t.round().toString())
+                                        .toList(),
+                                    description:
+                                        'Feels like ${weather.current!.apparentTemperature!.round().toString()} degrees, ${weatherCode.fetchCode(weather.current!.weatherCode)}.',
+                                    weatherCode: weather.hourly!.weatherCode,
+                                    isDay: weather.hourly!.isDay,
+                                  ).buildWidget(),
+                                  SizedBox(height: screenHeight * 0.02),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      weatherContainerBuild.weatherContainer(
+                                        CupertinoIcons.drop,
+                                        weather.current!.isDay!,
+                                        'Rain',
+                                        weather.current!.rain!.toInt(),
+                                        calcConditions.getRainDescription,
+                                      ),
+                                      weatherContainerBuild.weatherContainer(
+                                        CupertinoIcons.sun_min,
+                                        weather.current!.isDay!,
+                                        'UV Index',
+                                        weather.hourly!.uvIndex[0].toInt(),
+                                        calcConditions.uvIntensity,
+                                      ),
+                                      weatherContainerBuild.weatherContainer(
+                                        CupertinoIcons.cloud_sun,
+                                        weather.current!.isDay!,
+                                        'Humidity',
+                                        weather.hourly!.humidityPercent[0],
+                                        calcConditions.getHumidityDescription,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: screenHeight * 0.02),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Weekly Forecast',
+                                        style: TextStyle(
+                                          fontSize: screenWidth * 0.055,
+                                          fontFamily: 'Sarabun',
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: screenHeight * 0.01),
+                                  daysForecastWidget.daysForecastWidget(
+                                    weather.daily!.temperature2MMin,
+                                    weather.daily!.temperature2MMax,
                                   ),
                                 ],
                               ),
-                              const SizedBox(width: 10),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              const Icon(
-                                CupertinoIcons.location_fill,
-                                color: Colors.white,
-                              ),
-                              Text(
-                                cityandCountry,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 19,
-                                  fontFamily: 'Nunito',
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                            ],
+                            ),
                           ),
                         ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.35,
-                      ),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              WeatherTimeline(
-                                times: hours.parseHours(weather.hourly!.time),
-                                temps: weather.hourly!.temperature2M
-                                    .map((t) => t.round().toString())
-                                    .toList(),
-                                description:
-                                    'Feels like ${weather.current!.apparentTemperature!.round().toString()} degrees, ${weatherCode.fetchCode(weather.current!.weatherCode)}.',
-                                weatherCode: weather.hourly!.weatherCode,
-                                isDay: weather.hourly!.isDay,
-                              ).buildWidget(),
-                              const SizedBox(height: 15),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  weatherContainerBuild.weatherContainer(
-                                    CupertinoIcons.drop,
-                                    weather.current!.isDay!,
-                                    'Rain',
-                                    weather.current!.rain!.toInt(),
-                                    calcConditions.getRainDescription,
-                                  ),
-                                  weatherContainerBuild.weatherContainer(
-                                    CupertinoIcons.sun_min,
-                                    weather.current!.isDay!,
-                                    'UV Index',
-                                    weather.hourly!.uvIndex[0].toInt(),
-                                    calcConditions.uvIntensity,
-                                  ),
-                                  weatherContainerBuild.weatherContainer(
-                                    CupertinoIcons.cloud_sun,
-                                    weather.current!.isDay!,
-                                    'Humidity',
-                                    weather.hourly!.humidityPercent[0],
-                                    calcConditions.getHumidityDescription,
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 15),
-                              const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Weekly Forecast',
-                                    style: TextStyle(
-                                      fontSize: 21,
-                                      fontFamily: 'Sarabun',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 6),
-                              daysForecastWidget.daysForecastWidget(
-                                weather.daily!.temperature2MMin,
-                                weather.daily!.temperature2MMax,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
               ),
