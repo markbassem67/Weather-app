@@ -1,4 +1,4 @@
-# 🌦️ Weather App (Flutter)
+# 🌦️ QuickWeather (Flutter App)
 
 A cross-platform weather application built with **Flutter** that provides real-time weather updates with a clean and responsive UI. The app automatically detects the user’s location, fetches weather data using the **Open-Meteo API**, and displays it in a simple, intuitive format.  
 
