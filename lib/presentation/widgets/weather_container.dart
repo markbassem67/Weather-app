@@ -35,7 +35,7 @@ class WeatherContainer {
                     ? const Color(0xFF87CEEB)
                     : const Color(0xFF472B97),
               ),
-              Text(parameterType, style: const TextStyle(fontSize: 16)),
+              Text(' $parameterType', style: const TextStyle(fontSize: 16)),
             ],
           ),
           Text(

@@ -90,7 +90,6 @@ class WeatherTimeline {
     List<String> meridian = getFormattedTimes('a');
     meridian[0] = '';
     List<IconData> weatherIcons = getWeatherIcon(weatherCode, isDay);
-    // Dynamic width: base padding + spacing for each item
     double totalWidth = startLeft + (gap * (times.length - 1)) + 60;
 
     return Column(

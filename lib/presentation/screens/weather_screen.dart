@@ -4,14 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:testapp/core/utils/conditions_severity_calculator.dart';
-import 'package:testapp/core/utils/hours_parcer.dart';
-import 'package:testapp/core/utils/weather_code_mapper.dart';
-import 'package:testapp/logic/cubit/weather_cubit.dart';
-import 'package:testapp/logic/cubit/weather_state.dart';
-import 'package:testapp/presentation/widgets/days_forecast.dart';
 
+import '../../core/utils/conditions_severity_calculator.dart';
+import '../../core/utils/hours_parcer.dart';
+import '../../core/utils/weather_code_mapper.dart';
+import '../../logic/cubit/weather_cubit.dart';
+import '../../logic/cubit/weather_state.dart';
 import '../widgets/custom_popupmenu.dart';
+import '../widgets/days_forecast.dart';
 import '../widgets/hourly_timeline.dart';
 import '../widgets/location_services_disabled.dart';
 import '../widgets/no_internetconnection_widget.dart';
@@ -40,6 +40,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void initState() {
     super.initState();
     context.read<WeatherCubit>().getWeather();
+
   }
 
   @override
@@ -82,6 +83,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   // actions: [popupMenu.customPopupMenuWidget()], // TODO: add popup menu later
                   backgroundColor: Colors.transparent,
                   elevation: 0.0,
+                  scrolledUnderElevation: 0,
                 ),
                 body: SafeArea(
                   child: Column(
@@ -134,7 +136,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 cityandCountry,
                                 style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 19,
                                   fontFamily: 'Nunito',
                                 ),
                               ),
@@ -202,6 +204,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   ),
                                 ],
                               ),
+                              const SizedBox(height: 6),
                               daysForecastWidget.daysForecastWidget(
                                 weather.daily!.temperature2MMin,
                                 weather.daily!.temperature2MMax,

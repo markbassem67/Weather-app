@@ -24,7 +24,7 @@ class DaysForecast {
     List<String> days = getCurrentWeekDays();
     return Center(
       child: Container(
-        width: 300,
+        width: 280,
         child: Column(
           children: List.generate(7, (index) {
             final isSmallFont = index == 0;
@@ -56,7 +56,7 @@ class DaysForecast {
                             color: const Color(0xFF474747),
                             fontSize: fontSize,
                             fontFamily: 'Sarabun',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -83,5 +83,4 @@ class DaysForecast {
       ),
     );
   }
-
 }

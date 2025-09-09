@@ -8,10 +8,14 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Testapp</string>
+    <key>LSApplicationCategoryType</key>
+	<string></string>
 
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs your location to show weather forecasts.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requires your location even in the background to provide accurate weather updates.</string>
 
-    <string>This app needs your location to show weather forecasts.</string>
 
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -43,6 +47,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

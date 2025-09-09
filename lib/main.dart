@@ -10,9 +10,13 @@ import 'core/services/reverse_geocoding_service.dart';
 
 void main() {
   final weatherService = ObtainWeather();
-  final locationService=LocationServices();
-  final reversegoecode=ReverseGeocodingService();
-  final weatherRepository = WeatherRepository(weatherService,locationService,reversegoecode);
+  final locationService = LocationServices();
+  final reversegoecode = ReverseGeocodingService();
+  final weatherRepository = WeatherRepository(
+    weatherService,
+    locationService,
+    reversegoecode,
+  );
 
   runApp(
     BlocProvider(
@@ -33,9 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  const WeatherScreen(),
+      home: const WeatherScreen(),
     );
   }
 }
-
-

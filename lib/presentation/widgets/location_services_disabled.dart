@@ -19,7 +19,7 @@ class LocationServicesDisabled {
                     fontSize: 30, // Large font size for the hour
                     color: Colors.black,
                     fontFamily: 'Sarabun',
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 TextSpan(

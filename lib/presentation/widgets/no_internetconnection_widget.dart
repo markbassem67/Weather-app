@@ -19,7 +19,7 @@ class NoInternetWidget {
                     fontSize: 30, // Large font size for the hour
                     color: Colors.black,
                     fontFamily: 'Sarabun',
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 TextSpan(
@@ -27,7 +27,7 @@ class NoInternetWidget {
                   style: TextStyle(
                     fontFamily: 'Sarabun',
                     fontWeight: FontWeight.w400,
-                    fontSize: 15, // Smaller font size for AM/PM
+                    fontSize: 17, // Smaller font size for AM/PM
                     color: Colors.black,
                   ),
                 ),

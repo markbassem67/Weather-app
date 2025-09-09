@@ -17,17 +17,22 @@ class WeatherRepository {
 
   Future<WeatherModel> fetchWeather() async {
     try {
-      // 1. Check location
       final serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         throw LocationDisabledException();
       }
 
-      final permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied ||
-          permission == LocationPermission.deniedForever) {
+      var permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission(); // show popup
+        if (permission == LocationPermission.denied) {
+          throw LocationDisabledException();
+        }
+      }
+      if (permission == LocationPermission.deniedForever) {
         throw LocationDisabledException();
       }
+
 
       final position = await locationService.determinePosition();
       return service.fetchWeather(position.latitude, position.longitude);

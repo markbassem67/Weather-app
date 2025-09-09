@@ -1,3 +1,4 @@
+
 import 'package:testapp/data/models/weather_model.dart';
 
 abstract class WeatherState {}
